@@ -8,15 +8,20 @@
 //   2. The number of digits in the number (called the length)
 
 var detectNetwork = function(cardNumber) {
-	var firstTwo = '';
-	firstTwo += cardNumber[0] + cardNumber [1];
+	var firstTwo = '' + cardNumber[0] + cardNumber [1];
 	var cardLength = cardNumber.length
+
 	if (cardLength === 14 && (firstTwo === '38' || firstTwo === '39')) {
+		console.log('Diner\'s Club');
 		return 'Diner\'s Club';
 	}
+
 	if (cardLength === 15 && (firstTwo === '34' || firstTwo === '37')) {
+		console.log('American Express');
 		return 'American Express'
 	}
+    
+    console.log('Unknown Network');
 	return 'Unknown Network';
 };
 
