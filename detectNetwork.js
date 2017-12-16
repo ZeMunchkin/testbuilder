@@ -20,12 +20,24 @@ var detectNetwork = function(cardNumber) {
 		console.log('American Express');
 		return 'American Express'
 	}
-    
+
+	if (cardLength === 16 &&
+		(firstTwo === '51' || firstTwo === '52' || firstTwo === '53' || firstTwo === '54' || firstTwo === '55')) {
+		  console.log('MasterCard');
+		  return 'MasterCard';
+	}
+
+    if (cardNumber[0] === '4' && (
+    	cardLength === 13 || cardLength === 16 || cardLength === 19)) {
+    	  console.log('Visa');
+    	return 'Visa';
+    }
+
     console.log('Unknown Network');
 	return 'Unknown Network';
 };
 
-console.log(detectNetwork('37076017546778'));
+console.log(detectNetwork('4123456789012'));
 
   // Note: `cardNumber` will always be a string
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
