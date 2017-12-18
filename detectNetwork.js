@@ -36,6 +36,20 @@ var detectVisa = function(cardNumber) {
     return false;
 };
 
+var detectDiscover = function(cardNumber) {
+	var firstTwo = '' + cardNumber[0] + cardNumber[1];
+	var firstThree = '' + cardNumber[0] + cardNumber [1] + cardNumber[2];
+	var firstFour = '' + cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3];
+	var cardLength = cardNumber.length;
+
+	if ((cardLength === 16 || cardLength === 19) && 
+		(firstFour === '6011' || firstTwo === '65' || firstThree === '644' || firstThree === '645' || 
+		firstThree === '646' || firstThree === '647' || firstThree === '648' || firstThree === '649')) {
+			return true;
+	}
+	return false;
+};
+
 var detectNetwork = function(cardNumber) {
 	if (detectDinersClub(cardNumber)) {
 		return 'Diner\'s Club';
@@ -49,8 +63,10 @@ var detectNetwork = function(cardNumber) {
 	if (detectVisa(cardNumber)) {
 		return 'Visa';
 	}
-    console.log('Unknown Network');
+	if (detectDiscover(cardNumber)) {
+		return 'Discover';
+	}
 	return 'Unknown Network';
 };
 
-console.log(detectNetwork('4123456789012'));
+console.log(detectNetwork('6549207640183759'));
