@@ -1,46 +1,56 @@
-// Given a credit card number, this function should return a string with the 
-// name of a network, like 'MasterCard' or 'American Express'
-// Example: detectNetwork('343456789012345') should return 'American Express'
 
-// How can you tell one card network from another? Easy! 
-// There are two indicators:
-//   1. The first few numbers (called the prefix)
-//   2. The number of digits in the number (called the length)
-
-var detectNetwork = function(cardNumber) {
+var detectDinersClub = function(cardNumber) {
 	var firstTwo = '' + cardNumber[0] + cardNumber [1];
-	var cardLength = cardNumber.length
-
+	var cardLength = cardNumber.length;
 	if (cardLength === 14 && (firstTwo === '38' || firstTwo === '39')) {
-		console.log('Diner\'s Club');
-		return 'Diner\'s Club';
+		return true;
 	}
+	return false;
+};
 
+var detectAmericanExpress = function(cardNumber) {
+	var firstTwo = '' + cardNumber[0] + cardNumber [1];
+	var cardLength = cardNumber.length;
 	if (cardLength === 15 && (firstTwo === '34' || firstTwo === '37')) {
-		console.log('American Express');
-		return 'American Express'
+		return true;
 	}
+	return false;
+};
 
+var detectMasterCard = function(cardNumber) {
+	var firstTwo = '' + cardNumber[0] + cardNumber [1];
+	var cardLength = cardNumber.length;
 	if (cardLength === 16 &&
 		(firstTwo === '51' || firstTwo === '52' || firstTwo === '53' || firstTwo === '54' || firstTwo === '55')) {
-		  console.log('MasterCard');
-		  return 'MasterCard';
+		  return true;
 	}
+	return false;
+};
 
-    if (cardNumber[0] === '4' && (
+var detectVisa = function(cardNumber) {
+	var cardLength = cardNumber.length;
+	if (cardNumber[0] === '4' && (
     	cardLength === 13 || cardLength === 16 || cardLength === 19)) {
-    	  console.log('Visa');
-    	return 'Visa';
+    	return true;
     }
+    return false;
+};
 
+var detectNetwork = function(cardNumber) {
+	if (detectDinersClub(cardNumber)) {
+		return 'Diner\'s Club';
+	}
+	if (detectAmericanExpress(cardNumber)) {
+		return 'American Express';
+	}
+	if (detectMasterCard(cardNumber)) {
+		return 'MasterCard';
+	}
+	if (detectVisa(cardNumber)) {
+		return 'Visa';
+	}
     console.log('Unknown Network');
 	return 'Unknown Network';
 };
 
 console.log(detectNetwork('4123456789012'));
-
-  // Note: `cardNumber` will always be a string
-  // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
-  // The American Express network always starts with a 34 or 37 and is 15 digits long
-
-  // Once you've read this, go ahead and try to implement this function, then return to the console.
