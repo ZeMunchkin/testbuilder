@@ -280,6 +280,10 @@ describe('Maestro', function() {
     expect(detectNetwork('630456789012345678')).to.equal('Maestro');
   });
 
+  it('has a prefix of 6304 and a length of 19', function() {
+    expect(detectNetwork('6304567890123456789')).to.equal('Maestro');
+  });
+
 });
 
 describe('should support China UnionPay')
