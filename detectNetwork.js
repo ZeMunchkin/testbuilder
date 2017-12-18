@@ -60,6 +60,44 @@ var detectMaestro = function(cardNumber) {
 	return false;
 };
 
+var detectChinaUnionPay = function (cardNumber) {
+	var firstThirteen = '';
+	for (i = 0; i < 13; i++) {
+		firstThirteen += cardNumber[i];
+	}
+	var firstSeven = '';
+	for (i = 0; i < 7; i++) {
+		firstSeven = cardNumber[i];
+	}
+	var firstNine = '';
+	for (i = 0; i < 9; i++) {
+		firstNine += cardNumber[i];
+	}
+	var cardLength = cardNumber.length;
+
+	if ((firstThirteen === '622126-622925' || firstSeven === '624-626' || firstNine === '6282-6288') &&
+		cardLength >= 16 && cardLength <= 19) {
+		return true;
+	}
+	return false;
+}
+
+var detectSwitch = function (cardNumber) {
+	var cardLength = cardNumber.length;
+	var firstFour = '' + cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3];
+	var firstSix = '';
+	for (i = 0; i < 6; i++) {
+		firstSix += cardNumber[i];
+	}
+
+	if ((firstFour === '4903' || firstFour === '4905' || firstFour === '4911' || firstFour === '4936' || 
+		firstFour === '6333' || firstFour === '6759' || firstSix === '633110' || firstSix === '564182') 
+		&& (cardLength === 16 || cardLength === 18 || cardLength === 19)) {
+			return true;
+		}
+	return false;
+}
+
 var detectNetwork = function(cardNumber) {
 	if (detectDinersClub(cardNumber)) {
 		return 'Diner\'s Club';
@@ -70,14 +108,23 @@ var detectNetwork = function(cardNumber) {
 	if (detectMasterCard(cardNumber)) {
 		return 'MasterCard';
 	}
-	if (detectVisa(cardNumber)) {
-		return 'Visa';
-	}
 	if (detectDiscover(cardNumber)) {
 		return 'Discover';
 	}
 	if (detectMaestro(cardNumber)) {
 		return 'Maestro';
+	}
+	if (detectChinaUnionPay(cardNumber)) {
+		return 'China UnionPay';
+	}
+	if (detectVisa(cardNumber) && detectSwitch(cardNumber)) {
+		return 'Switch';
+	}
+	if (detectSwitch(cardNumber)) {
+		return 'Switch';
+	}
+	if (detectVisa(cardNumber)) {
+		return 'Visa';
 	}
 	return 'Unknown Network';
 };
