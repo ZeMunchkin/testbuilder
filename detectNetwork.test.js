@@ -78,7 +78,7 @@ describe('Visa', function() {
  
 
   it('has a prefix of 4 and a length of 13', function() {
-    assert(detectNetwork('4123456789012'), 'Visa', 'detectNetwork('4123456789012') equal `Visa`');
+    assert(detectNetwork('4123456789012'), 'Visa');
   });
 
   it('has a prefix of 4 and a length of 16', function() {
