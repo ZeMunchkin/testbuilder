@@ -61,23 +61,23 @@ var detectMaestro = function(cardNumber) {
 };
 
 var detectChinaUnionPay = function (cardNumber) {
-	var firstThirteen = '';
-	for (i = 0; i < 13; i++) {
-		firstThirteen += cardNumber[i];
+	var firstSix = '';
+	for (i = 0; i < 6; i++) {
+		firstSix += cardNumber[i];
 	}
-	var firstSeven = '';
-	for (i = 0; i < 7; i++) {
-		firstSeven += cardNumber[i];
-	}
-	var firstNine = '';
-	for (i = 0; i < 9; i++) {
-		firstNine += cardNumber[i];
-	}
+	var firstThree = '' + cardNumber[0] + cardNumber[1] + cardNumber[2];
+	var firstFour = '' + cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3];
 	var cardLength = cardNumber.length;
 
-	if ((firstThirteen === '622126-622925' || firstSeven === '624-626' || firstNine === '6282-6288') &&
-		cardLength >= 16 && cardLength <= 19) {
-		return true;
+	for (let i = 622126; i < 622926; i++) {
+		for (let j = 6282; j < 6289; j++) {
+			for (let k = 16; k < 20; k++) {
+			 	if ((firstFour === j || firstSix === i || firstThree === 624 || firstThree === 625 || 
+					firstThree === 626) && cardLength === k) {
+			 		return true;
+			 	}
+			}
+		}
 	}
 	return false;
 }
