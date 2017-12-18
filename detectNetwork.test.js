@@ -160,6 +160,34 @@ describe('Maestro', function() {
     expect(detectNetwork('501856789012')).to.equal('Maestro');
   });
 
+  it('has a prefix of 5018 and a length of 13', function() {
+    expect(detectNetwork('5018567890123')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5018 and a length of 14', function() {
+    expect(detectNetwork('50185678901234')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5018 and a length of 15', function() {
+    expect(detectNetwork('501856789012345')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5018 and a length of 16', function() {
+    expect(detectNetwork('5018567890123456')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5018 and a length of 17', function() {
+    expect(detectNetwork('50185678901234567')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5018 and a length of 18', function() {
+    expect(detectNetwork('501856789012345678')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5018 and a length of 19', function() {
+    expect(detectNetwork('5018567890123456789')).to.equal('Maestro');
+  });
+
 });
 
 describe('should support China UnionPay')
