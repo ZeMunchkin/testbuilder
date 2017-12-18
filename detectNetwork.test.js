@@ -1,8 +1,10 @@
+var chai = require('chai');
 
 // You don't actually want to fill *this* value in on line 9, but you'll see
 // other places in this file where you'll replace the FILL_ME_IN with a
 // different value.
-// var FILL_ME_IN = 'Fill this value in';
+var FILL_ME_IN = 'Fill this value in';
+
  
 // A Mocha test is just a function!
 // If the function throws an error when run, it fails.
@@ -35,7 +37,6 @@
 //});
 
 describe('Diner\'s Club', function() {
-  // Be careful, tests can have bugs too...
 
   it('has a prefix of 38 and a length of 14', function() {
  
@@ -53,8 +54,7 @@ describe('Diner\'s Club', function() {
 });
 
 describe('American Express', function() {
-  // It can get annoying to keep typing the if/throw, so here is a
-  // helper function to throw an error if the input statement isn't true. 
+
   var assert = function(isTrue) {
     if(!isTrue) {
       throw new Error('Test failed');
@@ -71,12 +71,14 @@ describe('American Express', function() {
   });
 });
 
+
+
 describe('Visa', function() {
   // Chai is an entire library of helper functions for tests!
   // Chai provides an assert that acts the same as our previous assert.
   // Search the documentation to figure out how to access it. 
   //   http://chaijs.com/
-  var assert = chai.equal;
+  var assert = chai.assert.equal();
  
 
   it('has a prefix of 4 and a length of 13', function() {
