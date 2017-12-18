@@ -2,7 +2,7 @@
 // You don't actually want to fill *this* value in on line 9, but you'll see
 // other places in this file where you'll replace the FILL_ME_IN with a
 // different value.
- var FILL_ME_IN = 'Fill this value in';
+// var FILL_ME_IN = 'Fill this value in';
  
 // A Mocha test is just a function!
 // If the function throws an error when run, it fails.
@@ -76,7 +76,7 @@ describe('Visa', function() {
   // Chai provides an assert that acts the same as our previous assert.
   // Search the documentation to figure out how to access it. 
   //   http://chaijs.com/
-  var assert = chai.FILL_ME_IN;
+  var assert = chai.equal;
  
 
   it('has a prefix of 4 and a length of 13', function() {
