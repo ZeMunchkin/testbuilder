@@ -148,6 +148,8 @@ describe('Discover', function() {
   it('has a prefix of 649 and a length of 19', function () {
     expect(detectNetwork('6494567890123456789')).to.equal('Discover');
   });
+  
+});
 
 
 describe('Maestro', function() {
