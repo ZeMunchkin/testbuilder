@@ -50,6 +50,16 @@ var detectDiscover = function(cardNumber) {
 	return false;
 };
 
+var detectMaestro = function(cardNumber) {
+	var firstFour = '' + cardNumber[0] + cardNumber[1] + cardNumber[2] + cardNumber[3];
+	var cardLength = cardNumber.length;
+	if ((firstFour === '5018' || firstFour === '5020' || firstFour === '5038' || firstFour === '6304') 
+		&& cardLength >= 12 && cardLength <= 19) {
+		return true;
+	}
+	return false;
+};
+
 var detectNetwork = function(cardNumber) {
 	if (detectDinersClub(cardNumber)) {
 		return 'Diner\'s Club';
@@ -66,7 +76,10 @@ var detectNetwork = function(cardNumber) {
 	if (detectDiscover(cardNumber)) {
 		return 'Discover';
 	}
+	if (detectMaestro(cardNumber)) {
+		return 'Maestro';
+	}
 	return 'Unknown Network';
 };
 
-console.log(detectNetwork('6549207640183759'));
+console.log(detectNetwork('5020678920475'));
