@@ -67,7 +67,7 @@ var detectChinaUnionPay = function (cardNumber) {
 	}
 	var firstSeven = '';
 	for (i = 0; i < 7; i++) {
-		firstSeven = cardNumber[i];
+		firstSeven += cardNumber[i];
 	}
 	var firstNine = '';
 	for (i = 0; i < 9; i++) {
