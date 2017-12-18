@@ -153,7 +153,13 @@ describe('Discover', function() {
 
 
 describe('Maestro', function() {
-  // Write full test coverage for the Maestro card
+  
+  var expect = chai.expect;
+ 
+  it('has a prefix of 5018 and a length of 12', function() {
+    expect(detectNetwork('501856789012')).to.equal('Maestro');
+  });
+
 });
 
 describe('should support China UnionPay')
