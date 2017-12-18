@@ -74,11 +74,11 @@ describe('Visa', function() {
   // Chai provides an assert that acts the same as our previous assert.
   // Search the documentation to figure out how to access it. 
   //   http://chaijs.com/
-  var assert = chai.equal;
+  var assert = chai.assert.equal;
  
 
   it('has a prefix of 4 and a length of 13', function() {
-    assert(detectNetwork('4123456789012'), 'Visa', 'detectNetwork('4123456789012') to equal `Visa`');
+    assert(detectNetwork('4123456789012'), 'Visa', 'detectNetwork('4123456789012') equal `Visa`');
   });
 
   it('has a prefix of 4 and a length of 16', function() {
