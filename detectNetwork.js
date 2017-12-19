@@ -72,8 +72,9 @@ var detectChinaUnionPay = function (cardNumber) {
 	for (let i = 622126; i < 622926; i++) {
 		for (let j = 6282; j < 6289; j++) {
 			for (let k = 16; k < 20; k++) {
-			 	if ((firstFour === j || firstSix === i || firstThree === 624 || firstThree === 625 || 
-					firstThree === 626) && cardLength === k) {
+			 	if ((Number(firstSix) === i || Number(firstFour) === j || firstThree === '624' || firstThree === '625' || 
+					firstThree === '626') && cardLength === k) {
+			 		console.log
 			 		return true;
 			 	}
 			}
@@ -129,4 +130,4 @@ var detectNetwork = function(cardNumber) {
 	return 'Unknown Network';
 };
 
-console.log(detectNetwork('5020678920475'));
+console.log(detectNetwork('62218678901234567'));
